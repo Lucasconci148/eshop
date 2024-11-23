@@ -1,0 +1,106 @@
+// TODO: mover colores a archivo de variables
+.shopItem {
+  background-color: #fff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  width: 246px;
+  border-radius: 25px;
+  padding: 12px;
+
+  &__imgContainer {
+    height: 140px;
+    width: 100%;
+    border-radius: 25px;
+    border: 2px solid gray;
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__titleSection {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 12px;
+
+    &__title {
+      font-size: "18px";
+    }
+
+    &__rightSection {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
+      &__text {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__subtitle {
+    font-size: 12px;
+  }
+
+  &__description {
+    font-size: 10px;
+    margin-top: 12px;
+  }
+
+  &__price {
+    font-size: 20px;
+    margin-top: 12px;
+  }
+}
+
+.img {
+  width: auto;
+  border-radius: 8px 0 0 8px;
+  border: 1px SOLID white;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  border-radius: "25px";
+  height: 100px;
+}
+
+.imgLoaded {
+  opacity: 1;
+}
+
+// TODO: esto se deberia mover a otro lado ?
+.star {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-right: 10px solid transparent;
+  border-bottom: 7px solid #ffc107;
+  border-left: 10px solid transparent;
+  transform: rotate(35deg);
+}
+
+.star:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -12px;
+  width: 0;
+  height: 0;
+  border-right: 10px solid transparent;
+  border-bottom: 7px solid #ffc107;
+  border-left: 10px solid transparent;
+  transform: rotate(-70deg);
+}
+
+.star:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -11px;
+  width: 0;
+  height: 0;
+  border-right: 10px solid transparent;
+  border-bottom: 7px solid #ffc107;
+  border-left: 10px solid transparent;
+  transform: rotate(70deg);
+}

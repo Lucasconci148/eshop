@@ -1,0 +1,11 @@
+//TODO: mover color
+.header {
+  height: 60px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+}
