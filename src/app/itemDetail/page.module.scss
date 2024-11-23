@@ -1,0 +1,172 @@
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 20px;
+  height: 100vh;
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+}
+
+.imagenContainer {
+  background-color: #fff;
+  max-height: 330px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.img {
+  height: 80%;
+  border-radius: 8px 0 0 8px;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.imgLoaded {
+  opacity: 1;
+}
+
+.leftSection {
+  display: flex;
+  justify-content: flex-start;
+
+  width: 40%;
+  flex-direction: column;
+
+  &__title {
+    font-size: 24px;
+    text-align: left;
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+  }
+
+  &__description {
+    font-size: 18px;
+    text-align: left;
+    margin: 20px 0;
+  }
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.rightSection {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  margin-left: 20px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.raitingSection {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  &__number {
+    font-size: 20px;
+  }
+}
+
+// TODO: esto se deberia mover a otro lado ?
+.star {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-right: 10px solid transparent;
+  border-bottom: 7px solid #ffc107;
+  border-left: 10px solid transparent;
+  transform: rotate(35deg);
+}
+
+.star:before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -12px;
+  width: 0;
+  height: 0;
+  border-right: 10px solid transparent;
+  border-bottom: 7px solid #ffc107;
+  border-left: 10px solid transparent;
+  transform: rotate(-70deg);
+}
+
+.star:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: -11px;
+  width: 0;
+  height: 0;
+  border-right: 10px solid transparent;
+  border-bottom: 7px solid #ffc107;
+  border-left: 10px solid transparent;
+  transform: rotate(70deg);
+}
+
+/* Estilo para mobile (menos de 768px) */
+@media (max-width: 767px) {
+  .titleMobile {
+    display: block;
+    font-size: 1.5rem;
+    color: black;
+    margin-bottom: 20px;
+  }
+
+  .leftSection {
+    width: 100%;
+  }
+
+  .titleTablet {
+    display: none;
+  }
+
+  .rightSection {
+    display: none;
+  }
+}
+
+/* Estilo para tablet (768px a 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .titleMobile {
+    display: none;
+    margin-bottom: 20px;
+  }
+
+  .titleTablet {
+    display: block;
+    font-size: 2rem;
+    color: blue; //TODO: quitar este color, es solo para diferenciar
+    margin-bottom: 20px;
+  }
+
+  .leftSection {
+    width: 100%;
+  }
+
+  .rightSection {
+    display: none;
+  }
+}
+
+/* Estilo para desktop (mayor a 1024px) */
+@media (min-width: 1025px) {
+  .titleMobile,
+  .titleTablet {
+    display: none;
+  }
+}

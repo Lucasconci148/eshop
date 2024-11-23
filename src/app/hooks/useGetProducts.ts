@@ -8,7 +8,7 @@ const fetchMockData = async () => {
 };
 
 // TODO: tipo duplicado
-type Product = {
+export type Product = {
   id: number;
   titulo: string;
   descripcion: string;

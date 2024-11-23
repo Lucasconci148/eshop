@@ -1,24 +1,42 @@
 "use client";
+import { useState } from "react";
 import styles from "./page.module.scss";
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GTShopItem from "./components/shopItem/shopItem";
 import { TextField } from "@mui/material";
-import useGetProducts from "./hooks/useGetProducts";
+import useGetProducts, { Product } from "./hooks/useGetProducts";
+import { useRouter } from "next/navigation";
+// import { Box, Button, Modal, Typography } from "@mui/material";
 
 export default function Home() {
   const { listOfProducts, loading, error } = useGetProducts();
+  const [searchTerm, setSearchTerm] = useState("");
+  const router = useRouter();
+
+  // modal
+  // const [open, setOpen] = useState(false);
+  // const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
 
   if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error}</div>;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.value);
+    setSearchTerm(event.target.value);
+  };
+
+  const filteredProducts = listOfProducts?.filter((item: Product) =>
+    item.titulo.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const handleClickProduct = (item: Product) => {
+    // set state
+    // redirect
+    router.push("/itemDetail");
   };
 
   return (
     <div className={styles.dashboard}>
-      <ToastContainer />
       <p className={styles.dashboard__title}>Titulo</p>
       <p className={styles.dashboard__content}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio est
@@ -38,15 +56,42 @@ export default function Home() {
           style={{ backgroundColor: "white" }}
         />
         <p className={styles.dashboard__search__results}>
-          {`${listOfProducts?.length} Productos`}
+          {`${filteredProducts?.length} Productos encontrados`}
         </p>
       </div>
 
       <div className={styles.dashboard__productList}>
-        {listOfProducts?.map((item: any, index: number) => (
-          <GTShopItem key={index} shopItem={item} />
-        ))}
+        {filteredProducts && filteredProducts.length > 0 ? (
+          filteredProducts.map((item: any, index: number) => (
+            <div onClick={() => handleClickProduct(item)} key={index}>
+              <GTShopItem shopItem={item} />
+            </div>
+          ))
+        ) : (
+          <p className={styles.dashboard__noResults}>
+            No se encontraron productos con el término "{searchTerm}"
+          </p>
+        )}
       </div>
+
+      {/* <Button onClick={handleOpen}>Open modal</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "white",
+          }}
+        >
+          este deberia ser el carrito
+        </div>
+      </Modal> */}
     </div>
   );
 }

@@ -45,10 +45,8 @@ const GTShopItem: FC<IGTItem> = ({ shopItem }: IGTItem) => {
       </div>
 
       <p className={styles.shopItem__subtitle}>{shopItem?.categoria}</p>
-
       <p className={styles.shopItem__description}>{shopItem?.descripcion}</p>
-
-      <p className={styles.shopItem__description}>{`$ ${shopItem?.precio}`}</p>
+      <p className={styles.shopItem__price}>{`$ ${shopItem?.precio}`}</p>
     </div>
   );
 };
