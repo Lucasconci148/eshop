@@ -7,19 +7,18 @@ const fetchMockData = async () => {
   });
 };
 
-// TODO: tipo duplicado
-export type Product = {
+export interface IShopItem {
   id: number;
   titulo: string;
   descripcion: string;
   precio: number;
   imagen: string;
-  fav?: boolean;
   rating: number;
   categoria: string;
-};
+  fav?: boolean;
+}
 
-type MockDataType = Product[];
+type MockDataType = IShopItem[];
 
 const useGetProducts = () => {
   const [listOfProducts, setListOfProducts] = useState<MockDataType | null>(

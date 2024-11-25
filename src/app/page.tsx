@@ -1,37 +1,34 @@
 "use client";
 import { useState } from "react";
 import styles from "./page.module.scss";
-import "react-toastify/dist/ReactToastify.css";
 import GTShopItem from "./components/shopItem/shopItem";
 import { TextField } from "@mui/material";
-import useGetProducts, { Product } from "./hooks/useGetProducts";
+import useGetProducts, { IShopItem } from "./hooks/useGetProducts";
 import { useRouter } from "next/navigation";
-// import { Box, Button, Modal, Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { setItemSelected } from "@/store/shopSlice";
+import LoadingComponent from "./components/Loading/Loading";
 
 export default function Home() {
   const { listOfProducts, loading, error } = useGetProducts();
   const [searchTerm, setSearchTerm] = useState("");
   const router = useRouter();
 
-  // modal
-  // const [open, setOpen] = useState(false);
-  // const handleOpen = () => setOpen(true);
-  // const handleClose = () => setOpen(false);
+  const dispatch = useDispatch();
 
-  if (loading) return <div>Cargando...</div>;
+  if (loading) return <LoadingComponent />;
   if (error) return <div>Error: {error}</div>;
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
   };
 
-  const filteredProducts = listOfProducts?.filter((item: Product) =>
+  const filteredProducts = listOfProducts?.filter((item: IShopItem) =>
     item.titulo.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const handleClickProduct = (item: Product) => {
-    // set state
-    // redirect
+  const handleClickProduct = (item: IShopItem) => {
+    dispatch(setItemSelected(item));
     router.push("/itemDetail");
   };
 
@@ -62,7 +59,7 @@ export default function Home() {
 
       <div className={styles.dashboard__productList}>
         {filteredProducts && filteredProducts.length > 0 ? (
-          filteredProducts.map((item: any, index: number) => (
+          filteredProducts.map((item: IShopItem, index: number) => (
             <div onClick={() => handleClickProduct(item)} key={index}>
               <GTShopItem shopItem={item} />
             </div>
@@ -73,25 +70,6 @@ export default function Home() {
           </p>
         )}
       </div>
-
-      {/* <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "white",
-          }}
-        >
-          este deberia ser el carrito
-        </div>
-      </Modal> */}
     </div>
   );
 }

@@ -3,24 +3,29 @@ import { useState } from "react";
 import styles from "./page.module.scss";
 import { Button } from "@mui/material";
 import { useRouter } from "next/navigation";
-
-const mock = {
-  id: 1,
-  titulo: "Cámara DSLR",
-  descripcion: "Cámara DSLR de alta calidad con enfoque automático rápido.",
-  precio: 799.99,
-  imagen:
-    "https://www.ubuy.com.ar/productimg/?image=aHR0cHM6Ly9pNS53YWxtYXJ0aW1hZ2VzLmNvbS9zZW8vQ2Fub24tRU9TLTc3RC1EU0xSLUNhbWVyYS13aXRoLTE4LTEzNW1tLVVTTS1MZW5zXzQ1NDM5OTRlLTgxNzUtNDdiZC04MmE4LTMxYWU2MWI1YzI5YV8xLmNhMTRhN2FhMDg2MDk3OGE0MjdkZmVjOTFhMGZjYjRmLmpwZWc.jpg",
-  fav: true,
-  rating: 4,
-  categoria: "Electrónica",
-};
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addToChart } from "@/store/shopSlice";
+import { RootState } from "@/store/store";
+import Image from "next/image";
 
 export default function ItemDetail() {
   const [isLoaded, setIsLoaded] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const stateChart = useSelector((state: RootState) => state.shopCartState);
+  const product = stateChart.itemSelected;
 
   const handleClickBack = () => {
+    router.push("/");
+  };
+
+  const handleAddProduct = () => {
+    toast.success("Producto Agregado a tu carrito!");
+    if (product) {
+      dispatch(addToChart(product));
+    }
     router.push("/");
   };
 
@@ -34,23 +39,21 @@ export default function ItemDetail() {
         Volver
       </p>
       <div className={styles.titleMobile}>
-        <p className={styles.leftSection__title}>{mock.titulo}</p>
+        <p className={styles.leftSection__title}>{product?.titulo}</p>
 
         <div className={styles.raitingSection}>
-          <div className={styles.star}></div>
-          <p className={styles.raitingSection__number}>{mock?.rating}</p>
+          <Image
+            src="/star.jpg"
+            alt="star"
+            width={20}
+            height={20}
+            style={{ marginRight: "2px" }}
+          />
+          <p className={styles.raitingSection__number}>{product?.rating}</p>
         </div>
         <hr />
       </div>
       <div className={styles.titleTablet}>Título para Tablet</div>
-
-      {/* <p
-        style={{ cursor: "pointer" }}
-        className={styles.leftSection__description}
-        onClick={handleClickBack}
-      >
-        Volver
-      </p> */}
 
       <section
         style={{
@@ -61,10 +64,9 @@ export default function ItemDetail() {
         }}
       >
         <div className={styles.leftSection}>
-          {/* imagen container */}
           <div className={styles.imagenContainer}>
             <img
-              src={mock?.imagen}
+              src={product?.imagen}
               className={`${styles.img} ${isLoaded ? styles.imgLoaded : ""}`}
               alt="shop-item"
               onLoad={() => setIsLoaded(true)}
@@ -72,19 +74,22 @@ export default function ItemDetail() {
           </div>
 
           <p className={styles.leftSection__title}>Descripcion</p>
-          <p className={styles.leftSection__description}>{mock.descripcion}</p>
+          <p className={styles.leftSection__description}>
+            {product?.descripcion}
+          </p>
 
           <div className={styles.buttonContainer}>
             <Button variant="contained">Comprar</Button>
           </div>
         </div>
 
+        {/* TODO: ESTO PODRIA SER UN COMPONENTE */}
         <section className={styles.rightSection}>
-          <p className={styles.leftSection__title}>{mock.titulo}</p>
+          <p className={styles.leftSection__title}>{product?.titulo}</p>
 
           <div className={styles.raitingSection}>
             <div className={styles.star}></div>
-            <p className={styles.raitingSection__number}>{mock?.rating}</p>
+            <p className={styles.raitingSection__number}>{product?.rating}</p>
           </div>
 
           <p className={styles.leftSection__description}>
@@ -92,7 +97,7 @@ export default function ItemDetail() {
           </p>
           <p
             className={styles.leftSection__description}
-          >{`$ ${mock.precio}`}</p>
+          >{`$ ${product?.precio}`}</p>
           <p className={styles.leftSection__description}>
             Ver los medios de pago
             <br /> Llega gratis hoy
@@ -108,9 +113,12 @@ export default function ItemDetail() {
 
           <p className={styles.leftSection__description}>Conocer más</p>
           <div className={styles.buttonContainer}>
-            <Button variant="contained">Comprar</Button>
+            <Button variant="contained" onClick={handleAddProduct}>
+              Comprar
+            </Button>
           </div>
         </section>
+        {/* TODO: ESTO PODRIA SER UN COMPONENTE */}
       </section>
     </div>
   );

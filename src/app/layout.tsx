@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
+"use client";
 import "./globals.scss";
 import GTHeader from "./components/header/header";
+import { Provider } from "react-redux";
+import { store } from "@/store/store";
+import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-
-export const metadata: Metadata = {
-  title: "EShop",
-};
 
 export default function RootLayout({
   children,
@@ -13,13 +12,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <ToastContainer />
-
-        <GTHeader />
-        {children}
-      </body>
-    </html>
+    <Provider store={store}>
+      <html lang="en">
+        <body>
+          <ToastContainer />
+          <GTHeader />
+          {children}
+        </body>
+      </html>
+    </Provider>
   );
 }

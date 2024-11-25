@@ -1,20 +1,10 @@
 import { FC, useState } from "react";
 import styles from "./shopItem.module.scss";
+import { IShopItem } from "@/app/hooks/useGetProducts";
+import Image from "next/image";
 
 export interface IGTItem {
   shopItem?: IShopItem;
-}
-
-// TODO: mover a otro lado
-export interface IShopItem {
-  id: number;
-  titulo: string;
-  descripcion: string;
-  precio: number;
-  imagen: string;
-  fav: boolean;
-  rating: number;
-  categoria: string;
 }
 
 const GTShopItem: FC<IGTItem> = ({ shopItem }: IGTItem) => {
@@ -37,7 +27,14 @@ const GTShopItem: FC<IGTItem> = ({ shopItem }: IGTItem) => {
         </p>
 
         <div className={styles.shopItem__titleSection__rightSection}>
-          <div className={styles.star}></div>
+          <Image
+            src="/star.jpg"
+            alt="star"
+            width={20}
+            height={20}
+            style={{ marginRight: "2px" }}
+          />
+
           <p className={styles.shopItem__titleSection__rightSection__text}>
             {shopItem?.rating}
           </p>

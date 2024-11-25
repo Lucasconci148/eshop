@@ -2,7 +2,6 @@
   margin: 0 auto;
   max-width: 1200px;
   padding: 0 20px;
-  height: 100vh;
   margin-top: 90px;
   display: flex;
   flex-direction: column;
@@ -20,7 +19,7 @@
 }
 
 .img {
-  height: 80%;
+  height: 70%;
   border-radius: 8px 0 0 8px;
   display: block;
   opacity: 0;
@@ -78,44 +77,6 @@
   &__number {
     font-size: 20px;
   }
-}
-
-// TODO: esto se deberia mover a otro lado ?
-.star {
-  position: relative;
-  display: inline-block;
-  width: 0;
-  height: 0;
-  border-right: 10px solid transparent;
-  border-bottom: 7px solid #ffc107;
-  border-left: 10px solid transparent;
-  transform: rotate(35deg);
-}
-
-.star:before {
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: -12px;
-  width: 0;
-  height: 0;
-  border-right: 10px solid transparent;
-  border-bottom: 7px solid #ffc107;
-  border-left: 10px solid transparent;
-  transform: rotate(-70deg);
-}
-
-.star:after {
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: -11px;
-  width: 0;
-  height: 0;
-  border-right: 10px solid transparent;
-  border-bottom: 7px solid #ffc107;
-  border-left: 10px solid transparent;
-  transform: rotate(70deg);
 }
 
 /* Estilo para mobile (menos de 768px) */

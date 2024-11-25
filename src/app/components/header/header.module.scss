@@ -1,11 +1,11 @@
-//TODO: mover color
+@import "../../theme/colors.scss";
 
 .dashboard__header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #fff;
+  background-color: $WhiteColor;
   z-index: 1000;
   padding: 10px 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -17,10 +17,20 @@
 .options {
   position: absolute;
   height: 400px;
-  width: 400px;
+  width: 350px;
   border-radius: 4px;
-  box-shadow: 0 2px 4px #00000014;
-  background-color: white;
+  background-color: $WhiteColor;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid $Grayscale1;
   right: 3px;
   top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart {
+  &__title {
+    font-size: 20px;
+    padding: 20px;
+  }
 }
