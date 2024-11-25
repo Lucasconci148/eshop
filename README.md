@@ -17,7 +17,7 @@ Ecomerce para Prueba técnica Frontend React
 
 Antes de empezar, asegúrate de tener instalado:
 
-- **Node.js** (versión 18 o superior).
+- **Node.js** (versión 22 o superior).
 - **npm** o **yarn** como gestor de paquetes.
 
 ## Instalación
