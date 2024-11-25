@@ -1,0 +1,27 @@
+.smallHeader {
+  &__title {
+    font-size: 24px;
+    text-align: left;
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  &__raitingSection {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    &__number {
+      font-size: 20px;
+    }
+  }
+}

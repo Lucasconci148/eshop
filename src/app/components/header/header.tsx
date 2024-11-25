@@ -8,6 +8,7 @@ import { RootState } from "@/store/store";
 import EmptyChart from "../emptyChart/emptyChart";
 import ChartItem from "../chartItem/chartItem";
 import { deleteById, increase, decrement } from "@/store/shopSlice";
+import { toast } from "react-toastify";
 
 const GTHeader = () => {
   const [shoppingChartOpen, setShoppingChartOpen] = useState(false);
@@ -30,6 +31,7 @@ const GTHeader = () => {
 
   const removeItemFromChart = (id: number) => {
     dispatch(deleteById(id));
+    toast.error("Producto eliminado!");
   };
 
   useEffect(() => {

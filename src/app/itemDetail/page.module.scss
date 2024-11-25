@@ -1,3 +1,5 @@
+@import "../theme/colors.scss";
+
 .container {
   margin: 0 auto;
   max-width: 1200px;
@@ -7,35 +9,29 @@
   flex-direction: column;
 }
 
-.imagenContainer {
-  background-color: #fff;
-  max-height: 330px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
+.itemDetail {
   width: 100%;
-  align-items: center;
-  justify-content: center;
   display: flex;
-}
-
-.img {
-  height: 70%;
-  border-radius: 8px 0 0 8px;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.imgLoaded {
-  opacity: 1;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .leftSection {
   display: flex;
   justify-content: flex-start;
-
   width: 40%;
   flex-direction: column;
+
+  &__imagenContainer {
+    background-color: $WhiteColor;
+    max-height: 330px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
 
   &__title {
     font-size: 24px;
@@ -50,16 +46,16 @@
     text-align: left;
     margin: 20px 0;
   }
-}
 
-.buttonContainer {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  &__buttonContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 }
 
 .rightSection {
-  background-color: #fff;
+  background-color: $WhiteColor;
   display: flex;
   flex-direction: column;
   width: 60%;
@@ -69,14 +65,24 @@
   border-radius: 20px;
 }
 
-.raitingSection {
+.favSpace {
   display: flex;
-  align-items: center;
   flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
 
-  &__number {
-    font-size: 20px;
-  }
+.img {
+  height: 50%;
+  border-radius: 8px 0 0 8px;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.imgLoaded {
+  opacity: 1;
 }
 
 /* Estilo para mobile (menos de 768px) */
@@ -111,7 +117,6 @@
   .titleTablet {
     display: block;
     font-size: 2rem;
-    color: blue; //TODO: quitar este color, es solo para diferenciar
     margin-bottom: 20px;
   }
 
@@ -128,6 +133,10 @@
 @media (min-width: 1025px) {
   .titleMobile,
   .titleTablet {
+    display: none;
+  }
+
+  .leftSection__buttonContainer {
     display: none;
   }
 }

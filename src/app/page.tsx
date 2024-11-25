@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setItemSelected } from "@/store/shopSlice";
 import LoadingComponent from "./components/Loading/Loading";
+import Image from "next/image";
 
 export default function Home() {
   const { listOfProducts, loading, error } = useGetProducts();
@@ -60,14 +61,25 @@ export default function Home() {
       <div className={styles.dashboard__productList}>
         {filteredProducts && filteredProducts.length > 0 ? (
           filteredProducts.map((item: IShopItem, index: number) => (
-            <div onClick={() => handleClickProduct(item)} key={index}>
-              <GTShopItem shopItem={item} />
-            </div>
+            <GTShopItem
+              key={index}
+              shopItem={item}
+              handleOnClick={() => handleClickProduct(item)}
+            />
           ))
         ) : (
-          <p className={styles.dashboard__noResults}>
-            No se encontraron productos con el término "{searchTerm}"
-          </p>
+          <div className={styles.emptyState}>
+            <Image src="/cart.png" alt="Carrito" width={60} height={60} />
+
+            <p className={styles.emptyState__title}>
+              No se encontraron productos
+            </p>
+            <p className={styles.emptyState__subtitle}>
+              No hay productos que coincidan con tu búsqueda. Intenta ajustar
+              tus filtros o verifica que el nombre que estás buscando sea
+              correcto.
+            </p>
+          </div>
         )}
       </div>
     </div>

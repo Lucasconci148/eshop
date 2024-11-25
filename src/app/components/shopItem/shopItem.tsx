@@ -4,14 +4,15 @@ import { IShopItem } from "@/app/hooks/useGetProducts";
 import Image from "next/image";
 
 export interface IGTItem {
+  handleOnClick: () => void;
   shopItem?: IShopItem;
 }
 
-const GTShopItem: FC<IGTItem> = ({ shopItem }: IGTItem) => {
+const GTShopItem: FC<IGTItem> = ({ shopItem, handleOnClick }: IGTItem) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <div className={styles.shopItem}>
+    <div className={styles.shopItem} onClick={handleOnClick}>
       <div className={styles.shopItem__imgContainer}>
         <img
           src={shopItem?.imagen}

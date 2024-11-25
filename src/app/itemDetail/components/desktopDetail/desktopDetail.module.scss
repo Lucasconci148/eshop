@@ -1,0 +1,36 @@
+.desktopDetail {
+  display: flex;
+  justify-content: flex-start;
+  width: 40%;
+  flex-direction: column;
+
+  &__title {
+    font-size: 24px;
+    text-align: left;
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+  }
+
+  &__description {
+    font-size: 18px;
+    text-align: left;
+    margin: 20px 0;
+  }
+
+  &__buttonContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__raitingSection {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+    &__number {
+      font-size: 20px;
+    }
+  }
+}
