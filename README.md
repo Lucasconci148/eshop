@@ -2,7 +2,7 @@
 
 Ecomerce para Prueba técnica Frontend React
 
-- [Demo - Preview](https://cardcreditform.web.app/)
+- [Demo - Preview](https://ddsqvmkvh4cwa.cloudfront.net/)
 
 ## Tecnologías Utilizadas
 
