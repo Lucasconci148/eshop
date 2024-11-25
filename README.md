@@ -1,6 +1,8 @@
 # EShop
 
-Ecomerce para prueba tecnica
+Ecomerce para Prueba técnica Frontend React
+
+- [Demo - Preview](https://cardcreditform.web.app/)
 
 ## Tecnologías Utilizadas
 
@@ -8,6 +10,8 @@ Ecomerce para prueba tecnica
 - **React**: Biblioteca de JavaScript para construir interfaces de usuario.
 - **Redux**: Manejo de estado para el carrito de compras.
 - **TypeScript**: Tipado estático para JavaScript.
+- **AWS - S3**: Bucket para guardar los archivos estaticos y poder desplegar la aplicacion.
+- **AWS - CloudFront**: Red de entrega de contenido (CDN) para servir los archivos que estan alojados en el bucket s3.
 
 ## Requisitos Previos
 
@@ -19,14 +23,26 @@ Antes de empezar, asegúrate de tener instalado:
 ## Instalación
 
 1. Clona el repositorio:
+
    ```bash
    git clone https://github.com/Lucasconci148/eshop
+   ```
+
+2. Accede al directorio del proyecto:
+
+   ```bash
+   cd eshop
+   ```
+
+3. Instala las dependencias:
+   ```bash
+   npm install o yarn install
    ```
 
 ## Enunciado del ejercicio
 
 ```bash
- Prueba técnica Frontend React Ssr
+Prueba técnica Frontend React Ssr
 
 Desarrollar una web con React y Next js, typescript y css puro (sin librerías de componentes), que permita mostrar un listado de productos y seleccionar uno para ver su detalle.
 El diseño debe seguir la estructura planteada en el excalidraw adjunto, los detalles no especificados quedan a libre elección.
