@@ -2,7 +2,7 @@
 
 Ecomerce para Prueba técnica Frontend React
 
-- [Demo - Preview](https://ddsqvmkvh4cwa.cloudfront.net/)
+- [Demo - Preview](https://eshop-one-puce.vercel.app/)
 
 ## Tecnologías Utilizadas
 
